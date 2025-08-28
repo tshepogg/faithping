@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>FaithPing — Daily Scripture (POC)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#5B3EBA" />
+  <meta name="description" content="FaithPing PWA — daily scripture popups, offline-ready, no servers needed." />
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="icons/logo.svg" alt="" class="logo" />
+      <span class="brand-name">FaithPing</span>
+      <small class="tag">POC · GitHub Pages</small>
+    </div>
+    <nav class="nav">
+      <button id="btn-open-settings" class="btn ghost">Settings</button>
+      <button id="btn-open-favs" class="btn ghost">Favorites</button>
+      <a class="btn primary" href="#" id="btn-show-now" aria-label="Show today's verse now">Today’s Verse</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card verse-card" aria-live="polite">
+      <h1 id="verse-ref" class="verse-ref">—</h1>
+      <p id="verse-text" class="verse-text">Loading verse…</p>
+      <div class="actions">
+        <button id="btn-share" class="btn">Share</button>
+        <button id="btn-copy" class="btn">Copy</button>
+        <button id="btn-fav" class="btn">❤ Favorite</button>
+        <button id="btn-next" class="btn ghost">Another</button>
+      </div>
+      <div class="meta">
+        <span id="today-label">Today:</span>
+        <span id="time-label" class="muted"></span>
+      </div>
+    </section>
+
+    <section class="card info">
+      <h2>How it works</h2>
+      <ol>
+        <li>Set your daily time (default 07:00).</li>
+        <li>Keep the tab/PWA open; you’ll get a popup each day with the verse.</li>
+        <li>Use Share/Copy, and save Favorites. Works offline.</li>
+      </ol>
+      <p class="muted">Tip: Install to Home Screen for a native feel.</p>
+    </section>
+  </main>
+
+  <!-- Verse of the Day Modal -->
+  <dialog id="verse-modal" class="modal" aria-label="Verse of the day">
+    <div class="modal-content">
+      <h3 id="modal-ref">—</h3>
+      <p id="modal-text">—</p>
+      <div class="modal-actions">
+        <button id="modal-share" class="btn">Share</button>
+        <button id="modal-copy" class="btn">Copy</button>
+        <button id="modal-fav" class="btn">❤ Favorite</button>
+        <button id="modal-snooze" class="btn ghost">Snooze 10 min</button>
+        <button id="modal-close" class="btn primary">Close</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Settings -->
+  <dialog id="settings" class="modal" aria-label="Settings">
+    <form method="dialog" class="modal-content">
+      <h3>Settings</h3>
+      <label class="field">
+        <span>Daily time</span>
+        <input type="time" id="set-time" value="07:00" required />
+      </label>
+      <label class="field">
+        <span>Language</span>
+        <select id="set-lang">
+          <option value="EN" selected>English</option>
+          <option value="TN">Setswana (placeholder)</option>
+        </select>
+      </label>
+      <label class="field row">
+        <span>Theme</span>
+        <select id="set-theme">
+          <option value="system">System</option>
+          <option value="light" selected>Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </label>
+      <menu class="modal-actions">
+        <button id="btn-export" class="btn ghost" type="button">Export Favorites</button>
+        <label class="btn ghost file">
+          Import Favorites
+          <input id="import-file" type="file" accept="application/json" hidden />
+        </label>
+        <button class="btn" id="btn-save-settings">Save</button>
+        <button class="btn primary">Close</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <!-- Favorites -->
+  <dialog id="favorites" class="modal" aria-label="Favorites">
+    <div class="modal-content">
+      <h3>Favorites</h3>
+      <ul id="fav-list" class="list"></ul>
+      <div class="modal-actions">
+        <button class="btn primary" id="btn-close-favs">Close</button>
+      </div>
+    </div>
+  </dialog>
+
+  <footer class="footer">
+    © <span id="year"></span> FaithPing • PWA POC • <a href="privacy.html">Privacy</a>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
