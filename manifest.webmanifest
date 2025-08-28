@@ -1,0 +1,14 @@
+{
+  "name": "FaithPing — Daily Scripture (POC)",
+  "short_name": "FaithPing",
+  "description": "Daily scripture popups, offline-first, static PWA.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8f9fc",
+  "theme_color": "#5B3EBA",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
