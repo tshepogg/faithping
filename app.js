@@ -10,7 +10,9 @@ const STORAGE_KEYS = {
   favorites: "fp_favorites",       // array of verse objects
 };
 const MODAL_SNOOZE_MIN = 10;
+
 const APP_VERSION = "1.0.1";
+
 
 // ===== State =====
 let VERSES = [];      // loaded from verses.json
@@ -247,7 +249,9 @@ async function init() {
   $("#btn-close-favs").addEventListener("click", ()=> $("#favorites").close());
 
   $("#btn-next").addEventListener("click", ()=> renderVerse(randomVerse(CURRENT?.id)));
+
   $("#modal-next").addEventListener("click", ()=> renderVerse(randomVerse(CURRENT?.id)));
+
   $("#btn-share").addEventListener("click", shareCurrent);
   $("#btn-copy").addEventListener("click", copyCurrent);
   $("#btn-fav").addEventListener("click", ()=> toggleFav(CURRENT));
