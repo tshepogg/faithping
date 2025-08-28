@@ -5,7 +5,9 @@ All data is local (`verses.json` + `localStorage`).
 
 ## Features
 - Deterministic verse-of-the-day, daily at your chosen time (default 07:00)
-- Modal popup, Share/Copy, Favorites, Export/Import favorites
+
+- Modal popup, Share/Copy, Favorites, Export/Import favorites, manual "New Verse" button
+
 - Offline-first caching (Service Worker), installable PWA
 - No external dependencies
 
