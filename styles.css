@@ -37,10 +37,12 @@ html, body { margin:0; padding:0; font-family: system-ui, -apple-system, Segoe U
 .modal { border: none; border-radius: 12px; padding: 0; width: min(680px, 92vw); background: transparent; }
 .modal::backdrop { background: rgba(0,0,0,0.4); }
 .modal-content { background: var(--card); border:1px solid var(--border); padding: 24px; border-radius: 12px; }
+#favorites .modal-content { max-height: 80vh; overflow-y: auto; }
 .modal-actions { margin-top: 16px; display:flex; gap: 8px; flex-wrap: wrap; }
 .field { display:flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
 .field.row { flex-direction: row; align-items: center; gap: 12px; }
 .list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
 .list li { border:1px solid var(--border); padding: 12px; border-radius: 8px; background: var(--card); }
+#fav-list { width: 100%; }
 .file { position: relative; overflow: hidden; }
 .file input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
