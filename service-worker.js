@@ -6,8 +6,10 @@ const CACHE = `faithping-${VERSION}`;
 const ASSETS = [
   "./",
   "./index.html",
+  "./verses.html",
   "./styles.css",
   "./app.js",
+  "./verses.js",
   "./verses.json",
   "./manifest.webmanifest",
   "./icons/icon-192.png",
