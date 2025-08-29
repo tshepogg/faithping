@@ -21,7 +21,8 @@
     <nav class="nav">
       <button id="btn-open-settings" class="btn ghost">Settings</button>
       <button id="btn-open-favs" class="btn ghost">Favorites</button>
-      <button id="btn-open-add" class="btn ghost">Add Verse</button>
+      <a class="btn ghost" href="verses.html">All Verses</a>
+      <button id="btn-get-verse" class="btn ghost">Get New Verse</button>
       <a class="btn primary" href="#" id="btn-show-now" aria-label="Show today's verse now">Today’s Verse</a>
     </nav>
   </header>
@@ -34,9 +35,6 @@
         <button id="btn-share" class="btn">Share</button>
         <button id="btn-copy" class="btn">Copy</button>
         <button id="btn-fav" class="btn">❤ Favorite</button>
-
-        <button id="btn-next" class="btn ghost">New Verse</button>
-
       </div>
       <div class="meta">
         <span id="today-label">Today:</span>
@@ -44,10 +42,6 @@
       </div>
     </section>
 
-    <section class="card" id="all-verses">
-      <h2>All Verses</h2>
-      <ul id="verse-list" class="list"></ul>
-    </section>
 
     <section class="card info">
       <h2>How it works2</h2>
@@ -69,9 +63,6 @@
         <button id="modal-share" class="btn">Share</button>
         <button id="modal-copy" class="btn">Copy</button>
         <button id="modal-fav" class="btn">❤ Favorite</button>
-
-        <button id="modal-next" class="btn ghost">New Verse</button>
-
         <button id="modal-snooze" class="btn ghost">Snooze 10 min</button>
         <button id="modal-close" class="btn primary">Close</button>
       </div>
@@ -124,24 +115,6 @@
     </div>
   </dialog>
 
-  <!-- Add Verse -->
-  <dialog id="add-verse" class="modal" aria-label="Add Verse">
-    <form id="add-verse-form" class="modal-content">
-      <h3>Add Verse</h3>
-      <label class="field">
-        <span>Reference</span>
-        <input id="new-verse-ref" required />
-      </label>
-      <label class="field">
-        <span>Text</span>
-        <textarea id="new-verse-text" required></textarea>
-      </label>
-      <menu class="modal-actions">
-        <button class="btn" type="button" id="btn-cancel-add">Cancel</button>
-        <button class="btn primary" id="btn-save-verse">Save</button>
-      </menu>
-    </form>
-  </dialog>
 
   <footer class="footer">
     © <span id="year"></span> FaithPing • PWA POC • <a href="privacy.html">Privacy</a>
