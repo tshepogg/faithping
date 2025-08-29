@@ -21,6 +21,7 @@
     <nav class="nav">
       <button id="btn-open-settings" class="btn ghost">Settings</button>
       <button id="btn-open-favs" class="btn ghost">Favorites</button>
+      <button id="btn-open-add" class="btn ghost">Add Verse</button>
       <a class="btn primary" href="#" id="btn-show-now" aria-label="Show today's verse now">Today’s Verse</a>
     </nav>
   </header>
@@ -41,6 +42,11 @@
         <span id="today-label">Today:</span>
         <span id="time-label" class="muted"></span>
       </div>
+    </section>
+
+    <section class="card" id="all-verses">
+      <h2>All Verses</h2>
+      <ul id="verse-list" class="list"></ul>
     </section>
 
     <section class="card info">
@@ -116,6 +122,25 @@
         <button class="btn primary" id="btn-close-favs">Close</button>
       </div>
     </div>
+  </dialog>
+
+  <!-- Add Verse -->
+  <dialog id="add-verse" class="modal" aria-label="Add Verse">
+    <form id="add-verse-form" class="modal-content">
+      <h3>Add Verse</h3>
+      <label class="field">
+        <span>Reference</span>
+        <input id="new-verse-ref" required />
+      </label>
+      <label class="field">
+        <span>Text</span>
+        <textarea id="new-verse-text" required></textarea>
+      </label>
+      <menu class="modal-actions">
+        <button class="btn" type="button" id="btn-cancel-add">Cancel</button>
+        <button class="btn primary" id="btn-save-verse">Save</button>
+      </menu>
+    </form>
   </dialog>
 
   <footer class="footer">

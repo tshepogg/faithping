@@ -8,6 +8,7 @@ const STORAGE_KEYS = {
   lastShown: "fp_last_shown",      // yyyy-mm-dd
   snoozeUntil: "fp_snooze_until",  // ISO timestamp
   favorites: "fp_favorites",       // array of verse objects
+  customVerses: "fp_custom_verses", // user-added verses
 };
 const MODAL_SNOOZE_MIN = 10;
 
@@ -133,6 +134,14 @@ function importFavorites(file) {
   reader.readAsText(file);
 }
 
+// ===== Custom Verses =====
+function getCustomVerses() { return loadJSON(STORAGE_KEYS.customVerses, []); }
+function addCustomVerse(v) {
+  const arr = getCustomVerses();
+  arr.push(v);
+  saveJSON(STORAGE_KEYS.customVerses, arr);
+}
+
 // ===== Rendering =====
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));}
 function renderVerse(v) {
@@ -143,6 +152,16 @@ function renderVerse(v) {
   $("#modal-text").textContent = v.text;
   $("#time-label").textContent = new Date().toLocaleString();
   renderFavButton();
+}
+function renderVerseList() {
+  const list = $("#verse-list");
+  if (!list) return;
+  list.innerHTML = "";
+  VERSES.forEach(v => {
+    const li = document.createElement("li");
+    li.innerHTML = `<strong>${escapeHtml(v.reference)}</strong><br>${escapeHtml(v.text)}`;
+    list.appendChild(li);
+  });
 }
 function showModal() {
   const dlg = $("#verse-modal");
@@ -235,10 +254,12 @@ async function init() {
     console.error("Failed to load verses.json");
     VERSES = [];
   }
+  VERSES = [...VERSES, ...getCustomVerses()];
 
   // Render today's verse immediately
   const v = pickVerseForDate(todayKey());
   if (v) renderVerse(v);
+  renderVerseList();
 
   // Apply settings
   document.getElementById("year").textContent = new Date().getFullYear();
@@ -252,6 +273,20 @@ async function init() {
   $("#btn-open-settings").addEventListener("click", ()=> $("#settings").showModal());
   $("#btn-open-favs").addEventListener("click", ()=> $("#favorites").showModal());
   $("#btn-close-favs").addEventListener("click", ()=> $("#favorites").close());
+  $("#btn-open-add").addEventListener("click", ()=> $("#add-verse").showModal());
+  $("#btn-cancel-add").addEventListener("click", ()=> $("#add-verse").close());
+  $("#add-verse-form").addEventListener("submit", (e)=>{
+    e.preventDefault();
+    const ref = $("#new-verse-ref").value.trim();
+    const text = $("#new-verse-text").value.trim();
+    if (!ref || !text) return;
+    const v = { id: `c${Date.now()}`, reference: ref, text };
+    addCustomVerse(v);
+    VERSES.push(v);
+    renderVerseList();
+    e.target.reset();
+    $("#add-verse").close();
+  });
 
   $("#btn-next").addEventListener("click", ()=> renderVerse(randomVerse(CURRENT?.id)));
 
