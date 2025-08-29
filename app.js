@@ -259,11 +259,13 @@ async function init() {
   document.getElementById("today-label").textContent = "Today (Africa/Gaborone):";
 
   // Events
-  $("#btn-show-now").addEventListener("click", (e)=>{ e.preventDefault(); showModal(); });
-  $("#btn-open-settings").addEventListener("click", ()=> $("#settings").showModal());
-  $("#btn-open-favs").addEventListener("click", ()=> $("#favorites").showModal());
+  $("#btn-show-now").addEventListener("click", ()=> showModal());
+  $("#btn-open-settings").addEventListener("click", ()=> { $("#settings").showModal(); $("#nav-menu").classList.remove("open"); });
+  $("#btn-open-favs").addEventListener("click", ()=> { $("#favorites").showModal(); $("#nav-menu").classList.remove("open"); });
   $("#btn-close-favs").addEventListener("click", ()=> $("#favorites").close());
-  $("#btn-get-verse").addEventListener("click", ()=> renderVerse(randomVerse(CURRENT?.id)));
+  $("#btn-get-verse").addEventListener("click", ()=> { const v = randomVerse(CURRENT?.id); if (v) renderVerse(v); $("#nav-menu").classList.remove("open"); });
+  $("#btn-menu").addEventListener("click", ()=> $("#nav-menu").classList.toggle("open"));
+  document.querySelectorAll("#nav-menu a").forEach(el => el.addEventListener("click", ()=> $("#nav-menu").classList.remove("open")));
 
   $("#btn-share").addEventListener("click", shareCurrent);
   $("#btn-copy").addEventListener("click", copyCurrent);
