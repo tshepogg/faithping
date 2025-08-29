@@ -1,6 +1,6 @@
 // Basic cache-first SW for FaithPing PWA
 
-const VERSION = "v1.0.1";
+const VERSION = "v1.0.2";
 
 const CACHE = `faithping-${VERSION}`;
 const ASSETS = [

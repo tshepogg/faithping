@@ -8,6 +8,8 @@ All data is local (`verses.json` + `localStorage`).
 
 - Modal popup, Share/Copy, Favorites, Export/Import favorites, manual "New Verse" button
 
+- Search all verses by reference or text
+
 - Offline-first caching (Service Worker), installable PWA
 - No external dependencies
 
