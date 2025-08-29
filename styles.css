@@ -42,7 +42,10 @@ html, body { margin:0; padding:0; font-family: system-ui, -apple-system, Segoe U
 .field { display:flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
 .field.row { flex-direction: row; align-items: center; gap: 12px; }
 .list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
-.list li { border:1px solid var(--border); padding: 12px; border-radius: 8px; background: var(--card); }
-#fav-list { width: 100%; }
+
+.list li { border:1px solid var(--border); padding: 12px 48px 12px 12px; border-radius: 8px; background: var(--card); position:relative; }
+.btn.small { padding: 4px 8px; font-size: 12px; }
+.list li .remove-btn { position:absolute; top:8px; right:8px; }
+
 .file { position: relative; overflow: hidden; }
 .file input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }

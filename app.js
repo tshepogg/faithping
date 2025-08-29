@@ -103,6 +103,11 @@ function renderFavList() {
   favs.forEach(v => {
     const li = document.createElement("li");
     li.innerHTML = `<strong>${escapeHtml(v.reference)}</strong><br>${escapeHtml(v.text)}`;
+    const btn = document.createElement("button");
+    btn.textContent = "Remove";
+    btn.className = "btn ghost small remove-btn";
+    btn.addEventListener("click", () => toggleFav(v));
+    li.appendChild(btn);
     list.appendChild(li);
   });
 }
